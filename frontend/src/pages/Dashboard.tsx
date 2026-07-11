@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
+import type { ShellContext } from '../App'
 import AccountCard from '../components/AccountCard'
 import { IconCloud, IconPlus } from '../components/Icons'
 import StorageRing from '../components/StorageRing'
@@ -9,7 +10,8 @@ import { api } from '../lib/api'
 import { accountColor, formatBytes } from '../lib/format'
 import type { Account, ApiResult } from '../types'
 
-export default function Dashboard({ onAddDrive }: { onAddDrive: () => void }) {
+export default function Dashboard() {
+  const { openAddDrive } = useOutletContext<ShellContext>()
   const { accounts, configured, error, refresh } = useAccounts()
   const { toasts, push } = useToasts()
 
@@ -18,11 +20,11 @@ export default function Dashboard({ onAddDrive }: { onAddDrive: () => void }) {
     const params = new URLSearchParams(window.location.search)
     if (params.get('connected')) {
       push(`Connected ${params.get('connected')} 🎉`)
-      window.history.replaceState({}, '', '/')
+      window.history.replaceState({}, '', '/app')
       refresh()
     } else if (params.get('error')) {
       push(params.get('error')!, 'err')
-      window.history.replaceState({}, '', '/')
+      window.history.replaceState({}, '', '/app')
     }
   }, [push, refresh])
 
@@ -76,7 +78,7 @@ export default function Dashboard({ onAddDrive }: { onAddDrive: () => void }) {
           All your drives, one cosmos. A two-minute, one-time setup connects DriveCosm to
           Google — the wizard walks you through every step.
         </p>
-        <Link to="/setup" className="btn btn-primary btn-lg">
+        <Link to="/app/setup" className="btn btn-primary btn-lg">
           Start setup
         </Link>
       </div>
@@ -94,7 +96,7 @@ export default function Dashboard({ onAddDrive }: { onAddDrive: () => void }) {
               : 'Add your first drive to get started'}
           </p>
         </div>
-        <button className="btn btn-primary" onClick={onAddDrive}>
+        <button className="btn btn-primary" onClick={openAddDrive}>
           <IconPlus size={16} /> Add drive
         </button>
       </div>
@@ -129,7 +131,7 @@ export default function Dashboard({ onAddDrive }: { onAddDrive: () => void }) {
         {accounts.map((a, i) => (
           <AccountCard key={a.id} account={a} index={i} onDisconnect={disconnect} />
         ))}
-        <button className="card card-dashed" onClick={onAddDrive}>
+        <button className="card card-dashed" onClick={openAddDrive}>
           <IconPlus size={26} />
           <div style={{ fontWeight: 600 }}>Add a drive</div>
           <div style={{ fontSize: '0.83rem' }}>Every drive grows your storage pool</div>

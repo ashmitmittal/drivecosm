@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
-import { IconCheck, IconCopy, IconLink } from '../components/Icons'
+import CopyRow from '../components/CopyRow'
+import { IconCheck, IconLink } from '../components/Icons'
 import { Toasts, useToasts } from '../components/Toast'
 import { api, connectGoogleAccount } from '../lib/api'
 import type { ApiResult, ConfigInfo } from '../types'
@@ -11,26 +12,6 @@ function ConsoleLink({ href, children }: { href: string; children: ReactNode }) 
     <a href={href} target="_blank" rel="noreferrer">
       {children} <IconLink size={13} className="inline-icon" />
     </a>
-  )
-}
-
-function CopyRow({ value }: { value: string }) {
-  const [copied, setCopied] = useState(false)
-  return (
-    <div className="code-row">
-      <code>{value}</code>
-      <button
-        className="btn btn-ghost btn-icon"
-        title="Copy"
-        onClick={async () => {
-          await navigator.clipboard.writeText(value)
-          setCopied(true)
-          setTimeout(() => setCopied(false), 1600)
-        }}
-      >
-        {copied ? <IconCheck style={{ color: 'var(--ok)' }} /> : <IconCopy />}
-      </button>
-    </div>
   )
 }
 

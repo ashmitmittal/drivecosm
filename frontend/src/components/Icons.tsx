@@ -21,11 +21,15 @@ function Svg({ size = 18, children, ...props }: IconProps) {
   )
 }
 
-export const IconLogo = (p: IconProps) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="4.2" />
-    <path d="M18.9 8.5c2.1 1.1 3.4 2.4 3.1 3.5-.5 1.9-5.3 2.4-10.7 1S1.6 9.1 2.1 7.2c.3-1.1 2.1-1.6 4.5-1.5" />
-  </Svg>
+/**
+ * The DriveCosm "Orbit Core" mark — one nucleus, a drive in orbit.
+ * Ring follows the text color; the core takes an explicit accent.
+ */
+export const LogoMark = ({ size = 24, core = '#7C6CFF', ...p }: SVGProps<SVGSVGElement> & { size?: number; core?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...p}>
+    <ellipse cx="60" cy="60" rx="46" ry="19" transform="rotate(-22 60 60)" stroke="currentColor" strokeWidth={6} />
+    <circle cx="60" cy="60" r="20" fill={core} />
+  </svg>
 )
 
 export const IconSun = (p: IconProps) => (
@@ -170,6 +174,19 @@ export const IconFolderFill = ({ size = 18, ...p }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" {...p}>
     <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.3c.66 0 1.3.26 1.77.73L12.2 7.4h6.3A2.5 2.5 0 0 1 21 9.9v7.6a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z" />
   </svg>
+)
+
+export const IconLock = (p: IconProps) => (
+  <Svg size={16} {...p}>
+    <rect x="4.5" y="10.5" width="15" height="10" rx="2.5" />
+    <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5" />
+  </Svg>
+)
+
+export const IconStar = (p: IconProps) => (
+  <Svg size={16} {...p}>
+    <path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" />
+  </Svg>
 )
 
 export const IconSparkles = (p: IconProps) => (

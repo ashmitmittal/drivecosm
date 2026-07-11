@@ -23,7 +23,7 @@ whichever account has the most free space — automatically.
 You need [Node.js](https://nodejs.org) 20.19 or newer.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/drivecosm.git
+git clone https://github.com/ashmitmittal/drivecosm.git
 cd drivecosm
 npm install
 npm run dev

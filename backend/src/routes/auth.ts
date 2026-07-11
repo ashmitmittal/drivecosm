@@ -33,7 +33,7 @@ function consumeState(state: string | undefined): boolean {
 // The OAuth flow ends with a browser redirect, so errors are reported back to
 // the dashboard as a query param (shown there as a toast) rather than as JSON.
 function failToDashboard(res: Response, message: string): void {
-  res.redirect(`/?error=${encodeURIComponent(message)}`)
+  res.redirect(`/app?error=${encodeURIComponent(message)}`)
 }
 
 router.get('/url', (_req, res) => {
@@ -81,7 +81,7 @@ router.get('/callback', async (req, res) => {
       connectedAt: existing?.connectedAt || new Date().toISOString(),
     })
 
-    res.redirect(`/?connected=${encodeURIComponent(me.email)}`)
+    res.redirect(`/app?connected=${encodeURIComponent(me.email)}`)
   } catch (e) {
     failToDashboard(res, e instanceof Error ? e.message : 'Could not connect the account.')
   }

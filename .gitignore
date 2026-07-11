@@ -9,6 +9,9 @@ frontend/dist/
 backend/data/
 data/
 
+# local Claude Code session settings
+.claude/
+
 # misc
 .DS_Store
 *.pem

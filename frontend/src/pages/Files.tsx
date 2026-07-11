@@ -266,7 +266,7 @@ export default function Files() {
               <p>
                 {(accounts || []).length === 0 ? (
                   <>
-                    Add a drive on the <Link to="/" style={{ color: 'var(--accent)' }}>dashboard</Link> first.
+                    Add a drive on the <Link to="/app" style={{ color: 'var(--accent)' }}>dashboard</Link> first.
                   </>
                 ) : (
                   'Upload something — DriveCosm automatically sends it to the drive with the most free space.'

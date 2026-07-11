@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAccounts } from '../lib/AccountsContext'
 import { accountColor, formatBytes } from '../lib/format'
 import ThemeToggle from './ThemeToggle'
-import { IconFolders, IconGear, IconHome, IconLogo, IconPhotos, IconPlus } from './Icons'
+import { IconFolders, IconGear, IconHome, IconPhotos, IconPlus, LogoMark } from './Icons'
 
 function linkClass({ isActive }: { isActive: boolean }): string {
   return `side-link${isActive ? ' active' : ''}`
@@ -14,21 +14,21 @@ export default function Sidebar({ onAddDrive }: { onAddDrive: () => void }) {
 
   return (
     <aside className="sidebar">
-      <NavLink to="/" className="sidebar-brand">
-        <span className="brand-mark">
-          <IconLogo size={17} />
+      <NavLink to="/app" className="sidebar-brand">
+        <LogoMark size={24} core="var(--accent)" />
+        <span className="brand-name">
+          Drive<span className="brand-accent">Cosm</span>
         </span>
-        <span className="brand-name">DriveCosm</span>
       </NavLink>
 
       <nav className="sidebar-nav">
-        <NavLink to="/" end className={linkClass}>
+        <NavLink to="/app" end className={linkClass}>
           <IconHome /> <span>Dashboard</span>
         </NavLink>
-        <NavLink to="/files" className={linkClass}>
+        <NavLink to="/app/files" className={linkClass}>
           <IconFolders /> <span>Files</span>
         </NavLink>
-        <NavLink to="/photos" className={linkClass}>
+        <NavLink to="/app/photos" className={linkClass}>
           <IconPhotos /> <span>Photos</span> <span className="soon-pill">soon</span>
         </NavLink>
       </nav>
@@ -44,7 +44,7 @@ export default function Sidebar({ onAddDrive }: { onAddDrive: () => void }) {
               key={account.id}
               className="side-drive"
               title={`${account.email} — open its files`}
-              onClick={() => navigate(`/files?account=${account.id}`)}
+              onClick={() => navigate(`/app/files?account=${account.id}`)}
             >
               {account.picture ? (
                 <img className="side-drive-avatar" src={account.picture} alt="" referrerPolicy="no-referrer" />
@@ -69,7 +69,7 @@ export default function Sidebar({ onAddDrive }: { onAddDrive: () => void }) {
       </div>
 
       <div className="sidebar-footer">
-        <NavLink to="/setup" className={linkClass}>
+        <NavLink to="/app/setup" className={linkClass}>
           <IconGear /> <span>Settings</span>
         </NavLink>
         <ThemeToggle />

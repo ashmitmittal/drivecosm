@@ -166,16 +166,8 @@ button {
   font-weight: 700;
 }
 
-.brand-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: var(--gradient);
-  display: grid;
-  place-items: center;
-  color: #fff;
-  box-shadow: var(--primary-glow);
-  flex-shrink: 0;
+.brand-accent {
+  color: var(--accent);
 }
 
 .brand-name {
