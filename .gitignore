@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# build output
+backend/dist/
+frontend/dist/
+
+# local data — holds your OAuth tokens, never commit this
+backend/data/
+data/
+
+# misc
+.DS_Store
+*.pem
+.env
+.env.*
+npm-debug.log*
