@@ -8,11 +8,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IconStar, LogoMark } from '../components/Icons'
 import { useAccounts } from '../lib/AccountsContext'
+import { GITHUB_REPO, GITHUB_URL, IS_PUBLIC_SITE } from '../lib/site'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const GITHUB_REPO = 'ashmitmittal/drivecosm'
-const GITHUB_URL = `https://github.com/${GITHUB_REPO}`
 
 // ---------------------------------------------------------------------------
 // Content
@@ -92,6 +90,23 @@ function GitHubButton({ small }: { small?: boolean }) {
     <a className={`dc-btn${small ? ' dc-btn-sm' : ''}`} href={GITHUB_URL} target="_blank" rel="noreferrer">
       <IconStar size={15} /> {label}
     </a>
+  )
+}
+
+// The primary call-to-action: opens the local app, or — on the public
+// website, where no app exists — sends people to the repo instead.
+function AppCta({ className, publicLabel, localLabel }: { className: string; publicLabel: string; localLabel: string }) {
+  if (IS_PUBLIC_SITE) {
+    return (
+      <a className={className} href={GITHUB_URL} target="_blank" rel="noreferrer">
+        {publicLabel}
+      </a>
+    )
+  }
+  return (
+    <Link to="/app" className={className}>
+      {localLabel}
+    </Link>
   )
 }
 
@@ -303,9 +318,7 @@ export default function Landing() {
           <a href="#connect">Connect</a>
           <a href="#how">How it works</a>
           <GitHubButton small />
-          <Link to="/app" className="dc-btn dc-btn-primary dc-btn-sm">
-            {cta}
-          </Link>
+          <AppCta className="dc-btn dc-btn-primary dc-btn-sm" publicLabel="Get it on GitHub" localLabel={cta} />
         </div>
       </nav>
 
@@ -325,9 +338,7 @@ export default function Landing() {
             drive with one search bar. Open source, on your machine. Scroll to see them come together.
           </p>
           <div className="dc-ctas">
-            <Link to="/app" className="dc-btn dc-btn-primary">
-              Connect your drives
-            </Link>
+            <AppCta className="dc-btn dc-btn-primary" publicLabel="Get started — it's open source" localLabel="Connect your drives" />
             <a href="#how" className="dc-btn">
               See how it works
             </a>
@@ -464,9 +475,7 @@ export default function Landing() {
         <div data-cta-inner className="dc-cta-inner">
           <h2>Bring your universe together.</h2>
           <div className="dc-ctas">
-            <Link to="/app" className="dc-btn dc-btn-primary">
-              {cta}
-            </Link>
+            <AppCta className="dc-btn dc-btn-primary" publicLabel="Get it on GitHub" localLabel={cta} />
             <GitHubButton />
           </div>
         </div>

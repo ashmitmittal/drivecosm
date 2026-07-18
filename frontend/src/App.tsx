@@ -5,11 +5,13 @@ import Sidebar from './components/Sidebar'
 import { Toasts, useToasts } from './components/Toast'
 import { AccountsProvider, useAccounts } from './lib/AccountsContext'
 import { connectGoogleAccount } from './lib/api'
+import { IS_PUBLIC_SITE } from './lib/site'
 import type { ProviderId } from './types'
 import Dashboard from './pages/Dashboard'
 import Files from './pages/Files'
 import Landing from './pages/Landing'
 import Photos from './pages/Photos'
+import PublicAppNotice from './pages/PublicAppNotice'
 import Setup from './pages/Setup'
 
 export interface ShellContext {
@@ -51,12 +53,16 @@ export default function App() {
     <AccountsProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/app" element={<AppShell />}>
-          <Route index element={<Dashboard />} />
-          <Route path="files" element={<Files />} />
-          <Route path="photos" element={<Photos />} />
-          <Route path="setup" element={<Setup />} />
-        </Route>
+        {IS_PUBLIC_SITE ? (
+          <Route path="/app/*" element={<PublicAppNotice />} />
+        ) : (
+          <Route path="/app" element={<AppShell />}>
+            <Route index element={<Dashboard />} />
+            <Route path="files" element={<Files />} />
+            <Route path="photos" element={<Photos />} />
+            <Route path="setup" element={<Setup />} />
+          </Route>
+        )}
       </Routes>
     </AccountsProvider>
   )

@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import type { ReactNode } from 'react'
 import type { Account, ApiResult, ConfigInfo } from '../types'
 import { api } from './api'
+import { IS_PUBLIC_SITE } from './site'
 
 // Accounts are shown in the sidebar as well as on the pages, so they live in
 // one shared context instead of being fetched by every screen separately.
@@ -20,6 +21,12 @@ export function AccountsProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
 
   const refresh = useCallback(async () => {
+    // The public website has no backend — don't fire doomed requests.
+    if (IS_PUBLIC_SITE) {
+      setConfigured(false)
+      setAccounts([])
+      return
+    }
     const [cfg, acc] = await Promise.all([
       api.get<ConfigInfo & ApiResult>('/api/config'),
       api.get<{ accounts?: Account[] } & ApiResult>('/api/accounts'),
