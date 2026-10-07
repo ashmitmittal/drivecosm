@@ -1,0 +1,948 @@
+/* ---------------------------------------------------------------------------
+   Public site — everything the landing shares with /pricing, /about, the
+   legal pages and the rest. Builds on the palette and primitives in
+   Landing.css (.dc-btn, .dc-card, .dc-kicker…).
+--------------------------------------------------------------------------- */
+
+.landing {
+  --dc-line: rgba(255, 255, 255, 0.08);
+  --dc-surface: rgba(255, 255, 255, 0.035);
+  --dc-ok: #5ac46a;
+}
+
+.landing main {
+  min-height: 60vh;
+}
+
+/* --------------------------------- nav ----------------------------------- */
+
+.dc-nav-brand {
+  color: var(--dc-text);
+}
+
+.dc-nav-links > a.active {
+  color: var(--dc-text);
+}
+
+.dc-nav-links > a.dc-btn-primary {
+  color: var(--dc-bg);
+}
+
+.dc-nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: none;
+  color: var(--dc-text);
+  cursor: pointer;
+}
+
+.dc-burger,
+.dc-burger::before,
+.dc-burger::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.dc-burger {
+  position: relative;
+}
+
+.dc-burger::before,
+.dc-burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.dc-burger::before {
+  top: -6px;
+}
+
+.dc-burger::after {
+  top: 6px;
+}
+
+/* -------------------------------- footer --------------------------------- */
+
+.dc-footer {
+  position: relative;
+  border-top: 1px solid var(--dc-line);
+  padding: 64px 40px 0;
+  background: var(--dc-bg);
+}
+
+.dc-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.dc-footer-about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 320px;
+}
+
+.dc-footer-about p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dc-muted);
+}
+
+.dc-footer-about > a:last-child,
+.dc-footer-col a {
+  font-size: 14px;
+  color: var(--dc-muted);
+  transition: color 0.2s;
+}
+
+.dc-footer-about > a:last-child:hover,
+.dc-footer-col a:hover {
+  color: var(--dc-text);
+}
+
+.dc-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dc-footer-col h4 {
+  margin: 0 0 4px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--dc-text);
+}
+
+.dc-footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1160px;
+  margin: 56px auto 0;
+  padding: 24px 0 32px;
+  border-top: 1px solid var(--dc-line);
+  font-size: 13px;
+  color: var(--dc-muted);
+}
+
+.dc-footer-fine {
+  max-width: 560px;
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+/* ------------------------------ page chrome ------------------------------ */
+
+.dc-page-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 168px 24px 48px;
+  text-align: center;
+}
+
+.dc-page-hero > *:not(.dc-hero-glow) {
+  position: relative;
+}
+
+.dc-page-hero .dc-lede {
+  max-width: 640px;
+}
+
+.dc-page-title {
+  margin: 0;
+  max-width: 860px;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+}
+
+.dc-section-tight {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.dc-h3 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.dc-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 56px 32px;
+  text-align: center;
+  border: 1px solid color-mix(in oklab, var(--dc-accent) 35%, transparent);
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--dc-accent) 16%, transparent), transparent 70%),
+    var(--dc-surface);
+}
+
+.dc-panel .dc-lede {
+  max-width: 520px;
+}
+
+.dc-more {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.dc-more a,
+.dc-text-link,
+.dc-note a,
+.dc-prose a,
+.dc-faq-a a,
+.dc-waitlist-note a,
+.dc-founder a {
+  color: var(--dc-accent);
+}
+
+.dc-more a:hover,
+.dc-text-link:hover,
+.dc-note a:hover,
+.dc-prose a:hover,
+.dc-faq-a a:hover,
+.dc-founder a:hover {
+  text-decoration: underline;
+}
+
+.dc-text-link {
+  font-size: 15px;
+}
+
+.dc-note {
+  margin: 32px 0 0;
+  font-size: 15px;
+  color: var(--dc-muted);
+}
+
+/* --------------------------------- cards --------------------------------- */
+
+.dc-cards-4 {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.dc-cards-2 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 0;
+}
+
+.dc-icon-box {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: var(--dc-accent);
+  background: color-mix(in oklab, var(--dc-accent) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--dc-accent) 30%, transparent);
+}
+
+.dc-card-body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dc-muted);
+}
+
+.dc-pill-accent {
+  align-self: flex-start;
+  color: var(--dc-accent);
+  border-color: var(--dc-accent-soft);
+}
+
+.dc-code-block {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+/* ----------------------------- AI + preview ------------------------------ */
+
+.dc-split {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.dc-ai-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dc-ai-list li {
+  display: flex;
+  gap: 14px;
+}
+
+.dc-ai-list svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--dc-accent);
+}
+
+.dc-ai-list strong {
+  font-size: 16px;
+}
+
+.dc-ai-list p {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--dc-muted);
+}
+
+.dc-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid var(--dc-line);
+  background: linear-gradient(160deg, color-mix(in oklab, var(--dc-accent) 12%, transparent), transparent 55%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: 0 40px 80px -40px color-mix(in oklab, var(--dc-accent) 50%, transparent);
+}
+
+.dc-preview-tag {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--dc-muted);
+}
+
+.dc-preview-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--dc-accent) 45%, transparent);
+  background: rgba(5, 6, 14, 0.6);
+  font-size: 15px;
+}
+
+.dc-preview-search svg {
+  color: var(--dc-muted);
+}
+
+.dc-preview-answer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #c1b7ff;
+}
+
+.dc-preview-results {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--dc-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dc-preview-results li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background: rgba(5, 6, 14, 0.4);
+}
+
+.dc-preview-results li + li {
+  border-top: 1px solid var(--dc-line);
+}
+
+.dc-preview-file {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dc-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--dc-muted);
+}
+
+.dc-preview-foot {
+  margin: 0;
+  font-size: 13px;
+  color: var(--dc-muted);
+}
+
+/* -------------------------------- pricing -------------------------------- */
+
+.dc-plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+  align-items: stretch;
+}
+
+.dc-section-tight .dc-plans {
+  margin-top: 0;
+}
+
+.dc-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 30px 28px;
+  border-radius: 20px;
+  border: 1px solid var(--dc-line);
+  background: var(--dc-surface);
+}
+
+.dc-plan.highlight {
+  border-color: color-mix(in oklab, var(--dc-accent) 60%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--dc-accent) 14%, transparent), transparent 60%),
+    var(--dc-surface);
+  box-shadow: 0 30px 70px -40px color-mix(in oklab, var(--dc-accent) 70%, transparent);
+}
+
+.dc-plan-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dc-plan-head h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.dc-plan.highlight .dc-pill {
+  color: var(--dc-accent);
+  border-color: var(--dc-accent-soft);
+}
+
+.dc-plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.dc-plan-amount {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+
+.dc-plan-cadence {
+  font-size: 14px;
+  color: var(--dc-muted);
+}
+
+.dc-plan-blurb {
+  margin: 0;
+  min-height: 3.2em;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dc-muted);
+}
+
+.dc-plan .dc-btn {
+  justify-content: center;
+  height: 46px;
+}
+
+.dc-plan-features {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: 4px 0 0;
+  padding: 18px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--dc-line);
+  font-size: 14px;
+}
+
+.dc-plan-features li {
+  display: flex;
+  gap: 10px;
+  line-height: 1.45;
+}
+
+.dc-plan-features svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--dc-accent);
+}
+
+/* -------------------------------- table ---------------------------------- */
+
+.dc-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--dc-line);
+  border-radius: 16px;
+}
+
+.dc-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.dc-table th,
+.dc-table td {
+  padding: 14px 20px;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  white-space: normal;
+  border-bottom: 1px solid var(--dc-line);
+}
+
+.dc-table thead th {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dc-text);
+  background: var(--dc-surface);
+}
+
+.dc-table tbody th {
+  font-weight: 400;
+  color: var(--dc-muted);
+}
+
+.dc-table td {
+  color: var(--dc-text);
+}
+
+.dc-table .dc-table-group th {
+  padding-top: 22px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--dc-accent);
+}
+
+.dc-table tbody tr {
+  cursor: default;
+}
+
+.dc-table tbody tr:hover {
+  background: none;
+}
+
+/* The app's table styles drop the last row's border in every tbody; here only
+   the very last row of the table should lose it. */
+.dc-table tr:last-child td {
+  border-bottom: 1px solid var(--dc-line);
+}
+
+.dc-table tbody:last-child tr:last-child > * {
+  border-bottom: none;
+}
+
+.dc-yes {
+  color: var(--dc-ok);
+}
+
+.dc-no {
+  color: var(--dc-muted);
+  opacity: 0.6;
+}
+
+/* --------------------------------- FAQ ----------------------------------- */
+
+.dc-faq {
+  border-top: 1px solid var(--dc-line);
+}
+
+.dc-faq details {
+  border-bottom: 1px solid var(--dc-line);
+}
+
+.dc-faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 4px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dc-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.dc-faq summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--dc-muted);
+  transition: transform 0.2s;
+}
+
+.dc-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.dc-faq-a {
+  max-width: 760px;
+  padding: 0 4px 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dc-muted);
+}
+
+/* ------------------------------- waitlist -------------------------------- */
+
+.dc-waitlist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.dc-waitlist-row {
+  display: flex;
+  gap: 10px;
+}
+
+.dc-waitlist input[type='email'] {
+  flex: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(5, 6, 14, 0.65);
+  color: var(--dc-text);
+  font: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.dc-waitlist input[type='email']:focus {
+  border-color: var(--dc-accent);
+}
+
+.dc-waitlist input[type='email']::placeholder {
+  color: var(--dc-muted);
+  opacity: 0.7;
+}
+
+.dc-waitlist .dc-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+/* Honeypot: present for bots, invisible and unreachable for people. */
+.dc-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.dc-waitlist-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--dc-muted);
+}
+
+.dc-waitlist-error {
+  color: #ff8a8a;
+}
+
+.dc-waitlist-done {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  max-width: 500px;
+  padding: 18px 20px;
+  text-align: left;
+  border-radius: 14px;
+  border: 1px solid rgba(90, 196, 106, 0.35);
+  background: rgba(90, 196, 106, 0.08);
+}
+
+.dc-waitlist-done p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--dc-muted);
+}
+
+.dc-waitlist-check {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--dc-bg);
+  background: var(--dc-ok);
+}
+
+.dc-cta-inner .dc-lede {
+  max-width: 520px;
+}
+
+/* -------------------------------- roadmap -------------------------------- */
+
+.dc-roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.dc-roadmap-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid var(--dc-line);
+  background: var(--dc-surface);
+}
+
+.dc-roadmap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.dc-roadmap-head h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.dc-roadmap-item {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--dc-line);
+  background: rgba(5, 6, 14, 0.5);
+}
+
+.dc-roadmap-item strong {
+  font-size: 15px;
+}
+
+.dc-roadmap-item p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--dc-muted);
+}
+
+/* ------------------------------ about/legal ------------------------------ */
+
+.dc-prose {
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #c9ccdd;
+}
+
+.dc-prose h2 {
+  margin: 44px 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--dc-text);
+}
+
+.dc-prose > h2:first-child {
+  margin-top: 0;
+}
+
+.dc-prose p {
+  margin: 0 0 16px;
+}
+
+.dc-prose ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.dc-prose li {
+  margin-bottom: 8px;
+}
+
+.dc-prose strong {
+  color: var(--dc-text);
+}
+
+.dc-founder {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid var(--dc-line);
+  background: var(--dc-surface);
+}
+
+.dc-founder .dc-h3 {
+  margin: 8px 0 4px;
+}
+
+.dc-founder-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dc-bg);
+  background: radial-gradient(circle at 38% 32%, color-mix(in oklab, var(--dc-accent) 80%, white), var(--dc-accent) 60%);
+}
+
+.dc-founder-role {
+  margin: 0 0 12px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--dc-muted);
+}
+
+.dc-founder .dc-card-body {
+  margin-bottom: 12px;
+}
+
+/* ------------------------------ responsive ------------------------------- */
+
+@media (max-width: 960px) {
+  .dc-split,
+  .dc-plans,
+  .dc-roadmap {
+    grid-template-columns: 1fr;
+  }
+  .dc-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dc-footer-about {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .dc-nav-toggle {
+    display: grid;
+  }
+  .dc-nav-links {
+    display: none;
+  }
+  .dc-nav.open .dc-nav-links {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px 20px 20px;
+    background: rgba(5, 6, 14, 0.96);
+    border-bottom: 1px solid var(--dc-line);
+  }
+  .dc-nav.open .dc-nav-links > a.dc-nav-link {
+    padding: 12px 4px;
+    font-size: 16px;
+  }
+  .dc-nav.open .dc-nav-links .dc-btn {
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .dc-nav-gh {
+    display: flex;
+  }
+  .dc-nav-gh .dc-btn {
+    flex: 1;
+  }
+  .dc-page-hero {
+    padding-top: 128px;
+  }
+  .dc-footer {
+    padding: 48px 20px 0;
+  }
+  .dc-footer-bar {
+    flex-direction: column;
+  }
+  .dc-footer-fine {
+    text-align: left;
+  }
+  .dc-founder {
+    flex-direction: column;
+    padding: 24px;
+  }
+  .dc-cta {
+    padding: 120px 20px 160px;
+  }
+}
+
+@media (max-width: 520px) {
+  .dc-waitlist-row {
+    flex-direction: column;
+  }
+  .dc-waitlist .dc-btn {
+    justify-content: center;
+  }
+  .dc-cards-2 {
+    grid-template-columns: 1fr;
+  }
+  .dc-panel {
+    padding: 40px 20px;
+  }
+}

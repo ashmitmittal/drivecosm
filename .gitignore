@@ -18,3 +18,5 @@ data/
 .env
 .env.*
 npm-debug.log*
+.vercel
+.env*

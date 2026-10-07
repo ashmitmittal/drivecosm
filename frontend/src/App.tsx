@@ -7,19 +7,24 @@ import { AccountsProvider, useAccounts } from './lib/AccountsContext'
 import { connectGoogleAccount } from './lib/api'
 import { IS_PUBLIC_SITE } from './lib/site'
 import type { ProviderId } from './types'
+import About from './pages/About'
 import Dashboard from './pages/Dashboard'
 import Files from './pages/Files'
 import Landing from './pages/Landing'
 import Photos from './pages/Photos'
+import Pricing from './pages/Pricing'
+import Privacy from './pages/Privacy'
 import PublicAppNotice from './pages/PublicAppNotice'
+import Roadmap from './pages/Roadmap'
 import Setup from './pages/Setup'
+import Terms from './pages/Terms'
 
 export interface ShellContext {
   openAddDrive: () => void
 }
 
 // The app shell — sidebar, add-drive modal, and toasts — wraps every /app
-// route. The landing page at / renders outside it, full-width.
+// route. The public site pages render outside it, full-width.
 function AppShell() {
   const [addDriveOpen, setAddDriveOpen] = useState(false)
   const { configured } = useAccounts()
@@ -53,6 +58,11 @@ export default function App() {
     <AccountsProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         {IS_PUBLIC_SITE ? (
           <Route path="/app/*" element={<PublicAppNotice />} />
         ) : (

@@ -1,6 +1,7 @@
 /* ---------------------------------------------------------------------------
    DriveCosm landing — scroll-driven design ("every drive, one cosmos").
    Deliberately dark-only with its own palette; the app keeps its themes.
+   Shared pieces of the other public pages live in Site.css.
 --------------------------------------------------------------------------- */
 
 .landing {
@@ -642,7 +643,7 @@
 
 .dc-cta {
   position: relative;
-  padding: 160px 40px 0;
+  padding: 160px 40px 200px;
   text-align: center;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -680,34 +681,6 @@
   letter-spacing: -1.5px;
   line-height: 1.05;
   max-width: 700px;
-}
-
-.dc-footer-bar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  max-width: 1160px;
-  margin: 130px auto 0;
-  padding: 26px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 13px;
-  color: var(--dc-muted);
-}
-
-.dc-footer-bar a {
-  color: var(--dc-muted);
-}
-
-.dc-footer-bar a:hover {
-  color: var(--dc-text);
-}
-
-.dc-footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* -------------------------------- keyframes ------------------------------- */
@@ -761,9 +734,6 @@
 @media (max-width: 860px) {
   .dc-nav {
     padding: 0 20px;
-  }
-  .dc-nav-links > a[href^='#'] {
-    display: none;
   }
   .dc-section {
     padding: 90px 20px;
