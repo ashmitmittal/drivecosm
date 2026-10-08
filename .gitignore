@@ -4,6 +4,7 @@ node_modules/
 # build output
 backend/dist/
 frontend/dist/
+frontend/dist-server/
 
 # local data — holds your OAuth tokens, never commit this
 backend/data/

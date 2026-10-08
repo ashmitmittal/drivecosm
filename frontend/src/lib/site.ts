@@ -16,7 +16,8 @@ export const LEGAL_UPDATED = 'October 7, 2026'
  * True when this bundle is served from the public website (drivecosm.com)
  * rather than a locally running instance. The app itself only exists locally —
  * on the public site there is no backend, so the UI switches to marketing
- * mode: CTAs point to the waitlist and GitHub, and /app explains how to get it.
+ * mode: CTAs point to the waitlist, and /app explains how to get it. The
+ * build-time prerender (no window) renders the public site too.
  */
 export const IS_PUBLIC_SITE =
-  typeof window !== 'undefined' && !['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)
+  typeof window === 'undefined' || !['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)
