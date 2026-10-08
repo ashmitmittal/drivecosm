@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import SiteLayout, { PageHero } from '../components/SiteLayout'
-import { GITHUB_URL } from '../lib/site'
 
 const COLUMNS: { title: string; tag: string; live?: boolean; items: { title: string; body: string }[] }[] = [
   {
@@ -64,8 +63,7 @@ export default function Roadmap() {
           ))}
         </div>
         <p className="dc-note">
-          Want something on this list sooner? <a href={`${GITHUB_URL}/issues`}>Open an issue on GitHub</a> or{' '}
-          <Link to="/about#contact">get in touch</Link>.
+          Want something on this list sooner? <Link to="/about#contact">Get in touch</Link>.
         </p>
       </section>
     </SiteLayout>

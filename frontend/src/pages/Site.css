@@ -905,12 +905,6 @@
     justify-content: center;
     margin-top: 8px;
   }
-  .dc-nav-gh {
-    display: flex;
-  }
-  .dc-nav-gh .dc-btn {
-    flex: 1;
-  }
   .dc-page-hero {
     padding-top: 128px;
   }

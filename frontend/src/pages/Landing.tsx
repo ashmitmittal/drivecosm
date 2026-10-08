@@ -20,7 +20,7 @@ import PricingCards from '../components/PricingCards'
 import SiteLayout from '../components/SiteLayout'
 import { PrimaryCta } from '../components/SiteNav'
 import WaitlistForm from '../components/WaitlistForm'
-import { GITHUB_URL, IS_PUBLIC_SITE } from '../lib/site'
+import { IS_PUBLIC_SITE } from '../lib/site'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -380,9 +380,9 @@ export default function Landing() {
                   <Link to="#waitlist" className="dc-btn dc-btn-primary">
                     Join the Cloud waitlist
                   </Link>
-                  <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="dc-btn">
-                    Self-host for free
-                  </a>
+                  <Link to="/pricing" className="dc-btn">
+                    See pricing
+                  </Link>
                 </>
               ) : (
                 <>
@@ -636,9 +636,9 @@ export default function Landing() {
                   DriveCosm Cloud is coming. Join the waitlist to get access as soon as it opens.
                 </p>
                 <WaitlistForm />
-                <a className="dc-text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">
-                  Or self-host it for free today →
-                </a>
+                <Link className="dc-text-link" to="/pricing">
+                  Prefer to run it yourself? See the free self-hosted plan →
+                </Link>
               </>
             ) : (
               <div className="dc-ctas">

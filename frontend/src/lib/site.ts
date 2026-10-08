@@ -5,7 +5,7 @@ export const GITHUB_URL = `https://github.com/${GITHUB_REPO}`
 export const CLONE_COMMAND = `git clone ${GITHUB_URL}.git && cd drivecosm && npm install && npm run dev`
 
 export const SITE_URL = 'https://drivecosm.com'
-export const CONTACT_EMAIL = 'support@drivecosm.com'
+export const CONTACT_EMAIL = 'ashmit@drivecosm.com'
 export const FOUNDER = { name: 'Ashmit Mittal', github: 'https://github.com/ashmitmittal' }
 export const COUNTRY = 'India'
 

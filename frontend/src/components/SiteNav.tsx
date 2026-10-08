@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import GitHubButton from './GitHubButton'
 import { IconClose, LogoMark } from './Icons'
 import { useAccounts } from '../lib/AccountsContext'
 import { IS_PUBLIC_SITE } from '../lib/site'
@@ -58,9 +57,6 @@ export default function SiteNav() {
             </NavLink>
           )
         )}
-        <span className="dc-nav-gh">
-          <GitHubButton small />
-        </span>
         <PrimaryCta className="dc-btn dc-btn-primary dc-btn-sm" />
       </div>
       <button className="dc-nav-toggle" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen((o) => !o)}>

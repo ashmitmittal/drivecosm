@@ -1,5 +1,5 @@
 import SiteLayout, { PageHero } from '../components/SiteLayout'
-import { CONTACT_EMAIL, COUNTRY, FOUNDER, GITHUB_URL } from '../lib/site'
+import { CONTACT_EMAIL, COUNTRY, FOUNDER } from '../lib/site'
 
 const PRINCIPLES = [
   {
@@ -81,9 +81,6 @@ export default function About() {
           <div className="dc-ctas">
             <a className="dc-btn dc-btn-primary" href={`mailto:${CONTACT_EMAIL}`}>
               {CONTACT_EMAIL}
-            </a>
-            <a className="dc-btn" href={`${GITHUB_URL}/issues`} target="_blank" rel="noreferrer">
-              Report a bug on GitHub
             </a>
           </div>
         </div>

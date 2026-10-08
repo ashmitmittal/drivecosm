@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { GITHUB_URL } from '../lib/site'
 
 export const FAQS: { q: string; a: ReactNode }[] = [
   {
@@ -17,7 +16,7 @@ export const FAQS: { q: string; a: ReactNode }[] = [
     a: (
       <>
         We&apos;re building it now. Join the waitlist and we&apos;ll email you when it opens. Until then, you
-        can use every core feature today by <a href={GITHUB_URL}>self-hosting</a>.
+        can use every core feature today by <Link to="/app">self-hosting</Link>.
       </>
     ),
   },
